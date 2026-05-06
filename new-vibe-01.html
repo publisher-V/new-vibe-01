@@ -333,7 +333,7 @@
     </main>
 
     <script>
-      const API_BASE = "";
+      const API_BASE = window.location.protocol === "file:" ? "" : window.location.origin;
       const STORAGE_KEY = "simple-notepad-notes";
 
       const noteList = document.querySelector("#noteList");
@@ -354,6 +354,9 @@
         async list() {
           if (API_BASE) {
             const response = await fetch(`${API_BASE}/notes`);
+            if (!response.ok) {
+              throw new Error("Failed to load notes");
+            }
             return response.json();
           }
 
@@ -368,6 +371,9 @@
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(note),
             });
+            if (!response.ok) {
+              throw new Error("Failed to save note");
+            }
             return response.json();
           }
 
@@ -378,7 +384,10 @@
         },
         async remove(id) {
           if (API_BASE) {
-            await fetch(`${API_BASE}/notes/${id}`, { method: "DELETE" });
+            const response = await fetch(`${API_BASE}/notes/${id}`, { method: "DELETE" });
+            if (!response.ok) {
+              throw new Error("Failed to delete note");
+            }
             return;
           }
 
