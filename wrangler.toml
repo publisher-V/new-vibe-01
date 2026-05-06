@@ -1,0 +1,8 @@
+name = "new-vibe-01"
+compatibility_date = "2026-05-06"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "new-vibe-01-notes"
+database_id = "28f576c5-a27e-4f2e-af5f-b178940e821d"

@@ -17,13 +17,21 @@ npx wrangler d1 create new-vibe-01-notes
 
 Dashboard에서는 `Workers & Pages > Pages 프로젝트 > Settings > Bindings`에서 추가할 수 있습니다.
 
-3. D1 마이그레이션을 적용합니다.
+3. Wrangler 설정 파일을 확인합니다.
+
+이 저장소에는 `wrangler.toml`이 포함되어 있습니다. 다른 D1 데이터베이스를 쓰는 경우에는 `database_id`만 본인의 D1 ID로 바꾸면 됩니다.
+
+```bash
+npx wrangler d1 list
+```
+
+4. D1 마이그레이션을 적용합니다.
 
 ```bash
 npx wrangler d1 migrations apply new-vibe-01-notes --remote
 ```
 
-4. Pages에 배포합니다.
+5. Pages에 배포합니다.
 
 GitHub 저장소를 Cloudflare Pages에 연결했다면, push 후 자동 배포됩니다.
 
