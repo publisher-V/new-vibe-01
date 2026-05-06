@@ -173,8 +173,6 @@ async function saveNote() {
   renderList();
   renderEditor();
   setStatus("저장됨");
-  titleInput.value = "";
-  contentInput.value = "";
 }
 
 async function deleteNote() {
